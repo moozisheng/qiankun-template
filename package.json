@@ -1,0 +1,39 @@
+{
+  "name": "qiankun-micro-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "install": "npm-run-all --serial install:*",
+    "install:main": "cd dev && cd main && npm i",
+    "install:sub-vue-vite": "cd dev && cd sub-vue-vite && npm i",
+    "install:sub-react-vite": "cd dev && cd sub-react-vite && npm i",
+    "install:sub-react-webpack": "cd dev && cd sub-react-webpack && npm i",
+    "remove": "npm-run-all --serial remove:*",
+    "remove:main": "cd dev && cd main && rm -rf node_modules",
+    "remove:sub-vue-vite": "cd dev && cd sub-vue-vite && rm -rf node_modules",
+    "remove:sub-react-vite": "cd dev && cd sub-react-vite && rm -rf node_modules",
+    "remove:sub-react-webpack": "cd dev && cd sub-react-webpack && rm -rf node_modules",
+    "start": "npm-run-all --parallel start:*",
+    "start:sub-react-vite": "cd dev && cd sub-react-vite && npm start",
+    "start:sub-react-webpack": "cd dev && cd sub-react-webpack && npm start",
+    "start:sub-vue-vite": "cd dev && cd sub-vue-vite && npm start",
+    "start:main": "cd dev && cd main && npm start",
+    "build": "npm-run-all build:* && bash ./scripts/bundle.sh",
+    "build:sub-react-vite": "cd dev && cd sub-react-vite && npm run build",
+    "build:sub-react-webpack": "cd dev && cd sub-react-webpack && npm run build",
+    "build:sub-vue-vite": "cd dev && cd sub-vue-vite && npm run build",
+    "build:main": "cd dev && cd main && npm run build",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.69.5"
+  },
+  "dependencies": {
+    "vite": "^4.5.0"
+  }
+}
